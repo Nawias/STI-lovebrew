@@ -869,7 +869,8 @@ function Map:drawTileLayer(layer)
 	if layer.chunks then
 		for _, chunk in ipairs(layer.chunks) do
 			for _, batch in pairs(chunk.batches) do
-				lg.draw(batch, 0, 0)
+				--lg.draw(batch, 0, 0)
+				batch:draw(0,0)
 			end
 		end
 
@@ -877,7 +878,8 @@ function Map:drawTileLayer(layer)
 	end
 
 	for _, batch in pairs(layer.batches) do
-		lg.draw(batch, floor(layer.x), floor(layer.y))
+		--lg.draw(batch, floor(layer.x), floor(layer.y))
+		batch:draw(floor(layer.x), floor(layer.y))
 	end
 end
 
@@ -950,7 +952,8 @@ function Map:drawObjectLayer(layer)
 
 	lg.setColor(reset)
 	for _, batch in pairs(layer.batches) do
-		lg.draw(batch, 0, 0)
+		--lg.draw(batch, 0, 0)
+		batch:draw(0,0)
 	end
 	lg.setColor(r,g,b,a)
 end

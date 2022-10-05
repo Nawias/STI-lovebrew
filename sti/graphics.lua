@@ -1,9 +1,11 @@
 local lg       = _G.love.graphics
 local graphics = { isCreated = lg and true or false }
+local cwd   = (...):gsub('%.graphics$', '') .. "."
+local SB    = require(cwd .. "spriteBatch")
 
 function graphics.newSpriteBatch(...)
 	if graphics.isCreated then
-		return lg.newSpriteBatch(...)
+		return SB.newSpriteBatch(...)
 	end
 end
 
