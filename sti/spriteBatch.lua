@@ -13,8 +13,10 @@ end
 function SpriteBatch:draw(x,y)
     for i,v in ipairs (self.sprites) do
         if v.quad == nil then
+            --print("Trans: ",v.transform)
             lg.draw(self.image, v.transform)
         else
+            --print("Quad: ",v.quad)
             lg.draw(self.image, v.quad, v.transform)
         end
     end
@@ -43,7 +45,7 @@ function SpriteBatch:add(quad, x, y, r, sx, sy, ox, oy, kx, ky)
     if type(quad) == "number" then
         return SpriteBatch.addNoQuad(self,quad, x, y, r, sx, sy, ox, oy, kx)
     end
-    table.insert(self.sprites,{quad, lm.newTransform(x, y, r, sx, sy, ox, oy, kx, ky)})
+    table.insert(self.sprites,{quad = quad, transform = lm.newTransform(x, y, r, sx, sy, ox, oy, kx, ky)})
     return table.getn(self.sprites)
 end
 
